@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+a {
+  @apply font-medium text-indigo-500 no-underline;
+}
+
+a:hover {
+  @apply text-indigo-400;
+}
+
+button {
+  cursor: pointer;
+} 
+
+.logoDisc {
+  width: 0.9em;
+  height: 0.9em; 
+  display: inline-block;
+  vertical-align: middle; 
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logoDisc {
+    animation: logoDisc-spin infinite 1s linear;
+  }
+}
+
+@keyframes logoDisc-spin {
+  from {
+    transform: rotate(-360deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #f1efef;
+  }
+  a:hover {
+    color: #2a044b;
+  } 
+}
