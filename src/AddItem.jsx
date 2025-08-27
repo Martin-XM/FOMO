@@ -9,6 +9,7 @@ import { authedFetch } from "./authedFetch.js";
 
 export default function AddItem() {
   const [form, setForm] = useState({
+    id: "",
     product: "",
     url: "",
     price: "",
@@ -32,19 +33,23 @@ export default function AddItem() {
     try {
       if (!form.product.trim()) throw new Error("Zadej název hry");
 
-      const checkIfExist = await authedFetch(
+    const checkMissing = await authedFetch(
       `/missing-games/${encodeURIComponent(form.product)}.json`
-    );
+      );
+      if (!checkMissing.ok) throw new Error("Chyba při kontrole databáze");
+      const existMissing = await checkMissing.json();
 
-    if (!checkIfExist.ok) throw new Error("Chyba při kontrole databáze");
+      const checkCollect = await authedFetch(
+      `/collect/${encodeURIComponent(form.product)}.json`
+      );
+      if (!checkCollect.ok) throw new Error("Chyba při kontrole databáze");
+      const existCollect = await checkCollect.json();
 
-    const exist = await checkIfExist.json();
-
-    if (exist) {
-      throw new Error("Hra s tímto názvem už v databázi je!");
+      if (existMissing || existCollect) {
+      throw new Error("Hra s tímto názvem v databázi existuje");
     }
-    
-    const res = await authedFetch(
+
+  const res = await authedFetch(
     `missing-games/${encodeURIComponent(form.product)}.json`,
       {
         method: "PUT",
@@ -58,6 +63,7 @@ export default function AddItem() {
       console.log("Odesláno:", data);
       setStatus("Úspěšně uloženo!");
       setForm({
+        id: "",
         product: "",
         url: "",
         price: "",
@@ -79,6 +85,7 @@ export default function AddItem() {
         <h2 className="text-center mb-3">Vlož do databáze hru pro sledování</h2>
         <form onSubmit={handleSubmit}>
           <input className={ formImput }
+            id="product"
             type="text"
             name="product"
             value={form.product}
@@ -86,6 +93,7 @@ export default function AddItem() {
             placeholder="Hra/produkt pro sledování"
           />
           <input className={ formImput }
+            id="url"
             type="text"
             name="url"
             value={form.url}
@@ -93,6 +101,7 @@ export default function AddItem() {
             placeholder="Odkaz na produkt"
           />
           <input className={ formImput }
+            id="price"  
             type="text"
             name="price"
             value={form.price}
@@ -100,6 +109,7 @@ export default function AddItem() {
             placeholder="Cena v Kč"
           />
           <input className={ formImput }
+            id="note"
             type="text"
             name="note"
             value={form.note}

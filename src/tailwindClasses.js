@@ -38,7 +38,7 @@ export const loginStyle =
 // BUTTONS
 
 export const buttonClasses =
-  "mb-2 mt-2 mr-2 inline-flex items-center gap-2 rounded-lg bg-black px-2 py-2 text-white font-medium focus:outline-none focus:ring-2 focus:ring-blue-400";
+  "mb-0 mt-1 mr-2 inline-flex items-center gap-2 rounded-lg bg-black px-2 py-2 text-white font-medium focus:outline-none focus:ring-2 focus:ring-blue-400";
 
 export const saveButon = 
 "mb-2 mt-2 mr-2 inline-flex items-center gap-2 rounded-lg bg-black px-2 py-2 text-white font-medium focus:outline-none focus:ring-2 focus:ring-blue-400 bg-green-500"
@@ -47,7 +47,7 @@ export const buyButon =
 "mb-2 mt-2 mr-2 inline-flex items-center gap-2 rounded-lg bg-black px-2 py-2 text-white font-medium focus:outline-none focus:ring-2 focus:ring-blue-400 bg-green-500"
 
 export const deleteButton = 
-"mb-2 mt-2 mr-2 inline-flex items-center gap-2 rounded-lg bg-black px-2 py-2 text-white font-medium focus:outline-none focus:ring-2 focus:ring-blue-400 bg-red-500"
+"mb-0 mt-2 mr-2 inline-flex items-center gap-2 rounded-lg bg-black px-2 py-2 text-white font-medium focus:outline-none focus:ring-2 focus:ring-blue-400 bg-red-500"
 
 export const logoutButton =
   "px-2 py-1 rounded bg-red-600 text-white text-sm hover:bg-red-700";

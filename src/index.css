@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 a {
-  @apply font-medium text-indigo-500 no-underline;
+  @apply font-medium text-indigo-700 no-underline;
 }
 
 a:hover {
-  @apply text-indigo-400;
+  @apply no-underline text-amber-400;
 }
 
 button {
@@ -32,15 +32,4 @@ button {
   to {
     transform: rotate(360deg);
   }
-}
-
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #f1efef;
-  }
-  a:hover {
-    color: #2a044b;
-  } 
 }

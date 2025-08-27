@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { buttonClasses, tableHeaderName, boxesClasses, tableWrapper, tableHeader, tableData } from "./tailwindClasses";
+import { buttonClasses, tableHeaderName, boxesClasses, tableWrapper, deleteButton, tableHeader, tableData } from "./tailwindClasses";
 import { authedFetch } from "./authedFetch.js";
 
 // databáze bez ověřování
@@ -24,6 +24,31 @@ export default function CollectList() {
       setStatus("Nepodařilo se načíst data");
     }
   }
+
+ async function deleteItem(id, item, target) {
+    try {
+      await authedFetch(`/${target}/${id}.json`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(item),
+      });
+
+      await authedFetch(`/collect/${encodeURIComponent(id)}.json`, {
+        method: "DELETE",
+      });
+
+      const updated = { ...items };
+      delete updated[id];
+      setItems(updated);
+
+      setStatus("Smazáno");
+    } catch (err) {
+      console.error(err);
+      setStatus("Chyba při smazání");
+    }
+  }
+  
+  
 
   return (
     <div className={ boxesClasses }>
@@ -89,6 +114,7 @@ export default function CollectList() {
             </tr>
           </tbody>
         </table>
+        <button className={deleteButton} onClick={() => deleteItem(id, item, "deleted")}>Smazat</button>
       </div>
     ))}
   </div>

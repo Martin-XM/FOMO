@@ -107,10 +107,10 @@ export default function MissingGamesList() {
         <div key={id} className={tableWrapper}>
           {editing === id ? (
             <>
-              <input className={formImput} name="product" value={form.product} onChange={handleChange} placeholder="Název" />
-              <input className={formImput} name="url" value={form.url} onChange={handleChange} placeholder="Odkaz" />
-              <input className={formImput} name="price" value={form.price} onChange={handleChange} placeholder="Cena" />
-              <input className={formImput} name="note" value={form.note} onChange={handleChange} placeholder="Poznámka" />
+              <input className={formImput} id="product" name="product" value={form.product} onChange={handleChange} placeholder="Název" />
+              <input className={formImput} id="url" name="url" value={form.url} onChange={handleChange} placeholder="Odkaz" />
+              <input className={formImput} id="price" name="price" value={form.price} onChange={handleChange} placeholder="Cena" />
+              <input className={formImput} id="note" name="note" value={form.note} onChange={handleChange} placeholder="Poznámka" />
               <button className={saveButon} onClick={() => handleSave(id)}>Uložit</button>
               <button className={`${buttonClasses}`} onClick={() => setEditing(null)}>Zrušit</button>
             </>
