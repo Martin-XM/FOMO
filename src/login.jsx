@@ -65,12 +65,14 @@ export default function Login() {
   return (
     <form onSubmit={handleLogin} className={loginRow}>
       <input
+        id="email"  
         className={loginInput}
         placeholder="E-mail"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
+        id="password"
         className={loginInput}
         placeholder="Heslo"
         type="password"

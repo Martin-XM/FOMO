@@ -2,7 +2,7 @@ import AddItem from "./AddItem.jsx";
 import MissingGamesList from "./MissingGamesList.jsx";
 import CollectList from "./CollectList.jsx";
 import Login from "./login.jsx";
-import DiscordWidget from "./discordWidget.jsx";  
+import DiscordWidget from "./_discordWidget.jsx";  
 import Footer from "./Footer.jsx";
 import diskImg from "./assets/logo-disc.png";
 import {
@@ -36,7 +36,7 @@ export default function App() {
               <CollectList />
             </div>
           </div>
-            <DiscordWidget />
+            {/* <DiscordWidget /> */}
             <Footer />       
     </div>
   )
