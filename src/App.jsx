@@ -4,6 +4,7 @@ import CollectList from "./CollectList.jsx";
 import Login from "./login.jsx";
 import DiscordWidget from "./discordWidget.jsx";  
 import Footer from "./Footer.jsx";
+import diskImg from "./assets/logo-disc.png";
 import {
   mainPageStyle,
   navStyle,
@@ -17,7 +18,7 @@ export default function App() {
           <nav className={navStyle}>
               <div className={navLogoCenter}>
               <span>F</span>
-              <img src="/src/assets/logo-disc.png" alt="Logo" className="logoDisc" />
+              <img src={diskImg} alt="disk" className="logoDisc" />
               <span>MO</span>
             </div>
     
